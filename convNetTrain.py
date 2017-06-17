@@ -3,9 +3,18 @@ from genericDataSetLoader import *
 from config import *
 import os
 from convNetModel import *
+import random
+import numpy as np
+
+random.seed(randomSeed)
+tf.set_random_seed(tensorflowSeed)
+np.random.seed(numpySeed)
 
 genericDataSetLoader = genericDataSetLoader(False,datasetFolder,n_classes,testTrainSplit,imageSizeX,imageSizeY)
 genericDataSetLoader.loadData()
+if oversample_minority:
+    genericDataSetLoader.oversampleMinorityClass(oversampling_multiplier)
+numTrainingBatches = genericDataSetLoader.numberOfTrainingBatches(batch_size)
 
 def calculateTrainAccuracy():
     genericDataSetLoader.resetTrainBatch()
@@ -71,13 +80,12 @@ def trainNeuralNetwork():
 
             if(prev_epoch_loss!=0):
                 loss_improvement = (prev_epoch_loss - epoch_loss)/prev_epoch_loss
-                if(loss_improvement<0.01):
+                if(loss_improvement<0.0005):
                     print "Loss did not improved more than the threshold...quitting now.."+str(loss_improvement)
                     break
                 else:
                     print "Loss has improved more than the threshold...saving this model.."+str(loss_improvement)
 
-            global_step.assign(epoch).eval()
             saver.save(sess,'model/data-all.chkp',global_step=global_step)
             print('Epoch', epoch, 'completed out of', numEpochs, 'loss:', epoch_loss)
 
@@ -87,11 +95,8 @@ def trainNeuralNetwork():
             #Get the validation/test accuracy
             calculateTestAccuracy()
 
-#if not os.path.exists(ckpt_dir):
-#    os.makedirs(ckpt_dir)
-
-global_step = tf.Variable(0, name='global_step', trainable=False)
-
-convNetModel = convNetModel()
+decaySteps = numEpochsPerDecay*numTrainingBatches
+convNetModel = convNetModel(decaySteps)
+global_step = convNetModel.getGlobalStep()
 saver = tf.train.Saver()
 trainNeuralNetwork()

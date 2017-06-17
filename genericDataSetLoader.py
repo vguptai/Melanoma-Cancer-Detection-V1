@@ -11,6 +11,11 @@ import imageManipulationUtil
 import dataManipulationUtil
 import pickle
 import util
+from collections import Counter
+from config import *
+
+tf.set_random_seed(tensorflowSeed)
+np.random.seed(numpySeed)
 
 class genericDataSetLoader:
 
@@ -84,6 +89,16 @@ class genericDataSetLoader:
             list1_shuf.append(list1[i])
             list2_shuf.append(list2[i])
         return list1_shuf,list2_shuf
+
+    def __shuffle_numpy_array(self,nparray1,nparray2):
+        nparray1_shuf = []
+        nparray2_shuf = []
+        index_shuf = range(nparray1.shape[0])
+        shuffle(index_shuf)
+        for i in index_shuf:
+            nparray1_shuf.append(nparray1[i])
+            nparray2_shuf.append(nparray2[i])
+        return np.array(nparray1_shuf),np.array(nparray2_shuf)
 
     def __trainTestSplit(self,filePaths,labels,splitPercentage):
         splitIndex = int(math.ceil(splitPercentage*len(filePaths)))
@@ -190,6 +205,69 @@ class genericDataSetLoader:
         print self.testingDataX.shape
         print self.testingDataY.shape
 
+    def oversampleMinorityClass(self,multiplier):
+        classes_index_array = np.argmax(self.trainingDataY, axis=1)
+        class_distribution = Counter(classes_index_array).most_common()
+        minority_class_index,minority_class_count = class_distribution[-1]
+        print class_distribution
+        print minority_class_index,minority_class_count
+        augmentedTrainingDataX = []
+        augmentedTrainingDataY = []
+        for i in range(len(classes_index_array)):
+            if minority_class_index==classes_index_array[i]:
+                for i in range(multiplier):
+                    augmentedTrainingDataX.append(self.trainingDataX[i])
+                    augmentedTrainingDataY.append(self.trainingDataY[i])
+        print "Number of examples added in training data:"+str(len(augmentedTrainingDataX))
+        augmentedTrainingDataX = np.array(augmentedTrainingDataX)
+        augmentedTrainingDataY = np.array(augmentedTrainingDataY)
+        print "Shape of training data before augmentation..."
+        print self.trainingDataX.shape
+        print self.trainingDataY.shape
+        self.trainingDataX = np.vstack((self.trainingDataX,augmentedTrainingDataX))
+        self.trainingDataY = np.vstack((self.trainingDataY,augmentedTrainingDataY))
+        print "Shape of training data after augmentation..."
+        print self.trainingDataX.shape
+        print self.trainingDataY.shape
+        self.trainingData, self.trainingDataY = self.__shuffle_numpy_array(self.trainingDataX,self.trainingDataY)
+        print "Shape of training data after augmentation and shuffle..."
+        print self.trainingDataX.shape
+        print self.trainingDataY.shape
+
+    def distortImage(self, flip_left_right, random_crop, random_scale,
+	                          random_brightness):
+
+	  print "Setting up image distortion operations..."
+
+	  decoded_image_as_float = tf.placeholder('float', [None,None,numChannels])
+	  decoded_image_4d = tf.expand_dims(decoded_image_as_float, 0)
+	  margin_scale = 1.0 + (random_crop / 100.0)
+	  resize_scale = 1.0 + (random_scale / 100.0)
+	  margin_scale_value = tf.constant(margin_scale)
+	  resize_scale_value = tf.random_uniform(tensor_shape.scalar(),minval=1.0,maxval=resize_scale)
+	  scale_value = tf.multiply(margin_scale_value, resize_scale_value)
+	  precrop_width = tf.multiply(scale_value, imageSizeX)
+	  precrop_height = tf.multiply(scale_value, imageSizeY)
+	  precrop_shape = tf.stack([precrop_height, precrop_width])
+	  precrop_shape_as_int = tf.cast(precrop_shape, dtype=tf.int32)
+	  precropped_image = tf.image.resize_bilinear(decoded_image_4d,precrop_shape_as_int)
+	  precropped_image_3d = tf.squeeze(precropped_image, squeeze_dims=[0])
+	  cropped_image = tf.random_crop(precropped_image_3d,[imageSizeX, imageSizeY,numChannels])
+	  if flip_left_right:
+	    flipped_image = tf.image.random_flip_left_right(cropped_image)
+	  else:
+	    flipped_image = cropped_image
+	  brightness_min = 1.0 - (random_brightness / 100.0)
+	  brightness_max = 1.0 + (random_brightness / 100.0)
+	  brightness_value = tf.random_uniform(tensor_shape.scalar(),
+	                                       minval=brightness_min,
+	                                       maxval=brightness_max)
+	  distort_result = tf.multiply(flipped_image, brightness_value)
+	  #distort_result = tf.expand_dims(brightened_image, 0, name='DistortResult')
+
+	  self.distortion_image_data_input_placeholder = decoded_image_as_float
+	  self.distort_image_data_operation = distort_result
+
     def __save(self):
         print "Saving the processed data..."
         preparedData={}
@@ -242,3 +320,6 @@ class genericDataSetLoader:
     def __convertOneHotVectorToLabels(self,oneHotVectors):
         labels = np.argmax(oneHotVectors==1,axis=1)
         return labels
+
+    def numberOfTrainingBatches(self,batch_size):
+        return int(len(self.trainingDataX)/batch_size)

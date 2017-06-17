@@ -1,6 +1,9 @@
 from random import shuffle
 import math
 import numpy as np
+from config import *
+
+np.random.seed(numpySeed)
 
 def selectRows(dataArray,rowOffset,numOfRows):
     if(rowOffset>=dataArray.shape[0]):

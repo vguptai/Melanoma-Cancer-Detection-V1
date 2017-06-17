@@ -8,10 +8,13 @@ from multiprocessing import Value, Lock
 import itertools
 from functools import partial
 from ctypes import c_int
+from config import *
 
 numParallelProcess = 16
 counter = Value(c_int)  # defaults to 0
 counter_lock = Lock()
+
+np.random.seed(numpySeed)
 
 def squashImageArray(imageDataArray,sizeX,sizeY):
     return scipy.misc.imresize(imageDataArray,(sizeX,sizeY))

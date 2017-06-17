@@ -5,6 +5,8 @@ from convNetModel import *
 genericDataSetLoader = genericDataSetLoader(False,"dataset",n_classes,testTrainSplit,imageSizeX,imageSizeY)
 genericDataSetLoader.loadData()
 
+tf.set_random_seed(tensorflowSeed)
+
 def testNeuralNetwork():
     with tf.Session() as sess:
         ckpt = tf.train.get_checkpoint_state(ckpt_dir)
