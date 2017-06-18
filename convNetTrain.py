@@ -25,9 +25,7 @@ def calculateTrainAccuracy():
             break
         acc = convNetModel.test(trainX,trainY)
         batchAccuracies.append(acc)
-        #print "Accuracy of test batch..."+str(acc)
-    #testX = np.reshape(testX, (-1, imageSizeX, imageSizeY, numChannels))
-    print('Training Accuracy:', sum(batchAccuracies) / float(len(batchAccuracies)))
+    print "Training Accuracy:"+ str(sum(batchAccuracies) / float(len(batchAccuracies)))
 
 def calculateTestAccuracy():
     genericDataSetLoader.resetTestBatch()
@@ -38,9 +36,7 @@ def calculateTestAccuracy():
             break
         acc = convNetModel.test(testX,testY)
         batchAccuracies.append(acc)
-        #print "Accuracy of test batch..."+str(acc)
-    #testX = np.reshape(testX, (-1, imageSizeX, imageSizeY, numChannels))
-    print('Testing/Validation Accuracy:', sum(batchAccuracies) / float(len(batchAccuracies)))
+    print "Testing Accuracy:" +str(sum(batchAccuracies) / float(len(batchAccuracies)))
 
 
 def restoreFromCheckPoint(sess,saver):
@@ -80,14 +76,14 @@ def trainNeuralNetwork():
 
             if(prev_epoch_loss!=0):
                 loss_improvement = (prev_epoch_loss - epoch_loss)/prev_epoch_loss
-                if(loss_improvement<0.0005):
+                if(loss_improvement<0.0):
                     print "Loss did not improved more than the threshold...quitting now.."+str(loss_improvement)
                     break
                 else:
                     print "Loss has improved more than the threshold...saving this model.."+str(loss_improvement)
 
             saver.save(sess,'model/data-all.chkp',global_step=global_step)
-            print('Epoch', epoch, 'completed out of', numEpochs, 'loss:', epoch_loss)
+            print "Epoch:"+str(epoch)+'/'+str(numEpochs)+" loss:" + str(epoch_loss)
 
             prev_epoch_loss = epoch_loss
 

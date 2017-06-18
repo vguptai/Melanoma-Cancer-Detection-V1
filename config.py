@@ -6,11 +6,11 @@ batch_size = 128
 testTrainSplit = 0.8
 imageSizeX=224
 imageSizeY=224
-training_keep_rate = 0.9
+training_keep_rate = 0.5
 testing_keep_rate = 1.0
 
 #Data augmentation
-oversample_minority = False
+oversample_minority = True
 oversampling_multiplier = 5
 
 ckpt_dir = "./model"
@@ -26,6 +26,6 @@ opsSeed = 1234
 dropoutSeed = 1234
 
 #learning rate
-learningRateInitial = 0.01
+learningRateInitial = 0.1
 learningRateDecayFactor = 0.16
-numEpochsPerDecay = 3
+numEpochsPerDecay = 30

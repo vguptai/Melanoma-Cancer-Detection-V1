@@ -25,8 +25,6 @@ class genericDataSetLoader:
     imageXSize = 224
     imageYSize = 224
     splitPercentage = 0.8
-    filePaths = []
-    totalDataY = []
     className2ClassIndxMap = {}
     trainingDataX = None
     testingDataX = None
@@ -161,19 +159,34 @@ class genericDataSetLoader:
         if(len(classDirectories)!=self.numClasses):
             raise Exception("Number of classes found in dataset is not equal to the specified numClasses")
         self.__initializeClass2IndxMap(classDirectories)
+        dataMap = {}
+        self.trainingDataX = []
+        self.trainingDataY = []
+        self.testingDataX = []
+        self.testingDataY = []
         for classDirectory in classDirectories:
             classFiles = next(walk(path.join(self.basePath,classDirectory)))[2]
+            filePaths = []
+            totalDataY = []
+            dataMap[classDirectory] = {}
             for fname in classFiles:
-                self.filePaths.append(self.basePath+"/"+classDirectory+"/"+fname)
-                self.totalDataY.append(self.__getClassIndex(classDirectory))
+                filePaths.append(self.basePath+"/"+classDirectory+"/"+fname)
+                totalDataY.append(self.__getClassIndex(classDirectory))
+            dataMap[classDirectory]["filePaths"] = filePaths
+            dataMap[classDirectory]["fileLabels"] = totalDataY
+
+        #split into train-test
+        for key,value in dataMap.iteritems():
+            dataMap[key]["trainingDataX"],dataMap[key]["trainingDataY"],dataMap[key]["testingDataX"],dataMap[key]["testingDataY"]  = self.__trainTestSplit(dataMap[key]["filePaths"],dataMap[key]["fileLabels"],self.splitPercentage)
+            self.trainingDataX.extend(dataMap[key]["trainingDataX"])
+            self.trainingDataY.extend(dataMap[key]["trainingDataY"])
+            self.testingDataX.extend(dataMap[key]["testingDataX"])
+            self.testingDataY.extend(dataMap[key]["testingDataY"])
 
         print "Shuffling the dataset..."
         #shuffle the dataset for randomization
-        shuffledFilePaths,shuffledLabels = self.__shuffle(self.filePaths,self.totalDataY)
-
-        #split into train-test
-        print "Splitting into train and test..."
-        self.trainingDataX,self.trainingDataY,self.testingDataX,self.testingDataY = self.__trainTestSplit(shuffledFilePaths,shuffledLabels,self.splitPercentage)
+        self.trainingDataX,self.trainingDataY = self.__shuffle(self.trainingDataX,self.trainingDataY)
+        self.testingDataX,self.testingDataY = self.__shuffle(self.testingDataX,self.testingDataY)
 
         self.__postProcessData()
         self.__save()
