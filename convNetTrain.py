@@ -3,9 +3,15 @@ from genericDataSetLoader import *
 from config import *
 import os
 from convNetModel import *
+import random
+import numpy as np
 
 genericDataSetLoader = genericDataSetLoader(False,datasetFolder,n_classes,testTrainSplit,imageSizeX,imageSizeY)
 genericDataSetLoader.loadData()
+
+random.seed(randomSeed)
+tf.set_random_seed(tensorflowSeed)
+np.random.seed(numpySeed)
 
 def calculateTrainAccuracy():
     genericDataSetLoader.resetTrainBatch()
@@ -71,9 +77,9 @@ def trainNeuralNetwork():
 
             if(prev_epoch_loss!=0):
                 loss_improvement = (prev_epoch_loss - epoch_loss)/prev_epoch_loss
-                if(loss_improvement<0.01):
+                if(loss_improvement<0.0):
                     print "Loss did not improved more than the threshold...quitting now.."+str(loss_improvement)
-                    break
+                    #break
                 else:
                     print "Loss has improved more than the threshold...saving this model.."+str(loss_improvement)
 

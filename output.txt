@@ -1,0 +1,390 @@
+Start from:0/2000
+('Epoch', 0, 'completed out of', 2000, 'loss:', 40368092901.625)
+('Training Accuracy:', 0.88327814569536423)
+('Testing/Validation Accuracy:', 0.86845843337084117)
+Loss has improved more than the threshold...saving this model..0.916323841326
+('Epoch', 1, 'completed out of', 2000, 'loss:', 3377846947.0)
+('Training Accuracy:', 0.9070778145695364)
+('Testing/Validation Accuracy:', 0.88987739305747182)
+Loss has improved more than the threshold...saving this model..0.495562509996
+('Epoch', 2, 'completed out of', 2000, 'loss:', 1703912635.5625)
+('Training Accuracy:', 0.93781043046357615)
+('Testing/Validation Accuracy:', 0.91656698600242015)
+Loss has improved more than the threshold...saving this model..0.406653203784
+('Epoch', 3, 'completed out of', 2000, 'loss:', 1011011103.34375)
+('Training Accuracy:', 0.95581539735099341)
+('Testing/Validation Accuracy:', 0.92972488073926218)
+Loss has improved more than the threshold...saving this model..0.390471880923
+('Epoch', 4, 'completed out of', 2000, 'loss:', 616239696.1875)
+('Training Accuracy:', 0.95871274834437081)
+('Testing/Validation Accuracy:', 0.9330143544234728)
+Loss has improved more than the threshold...saving this model..0.171310976978
+('Epoch', 5, 'completed out of', 2000, 'loss:', 510671071.78125)
+('Training Accuracy:', 0.96181705298013243)
+('Testing/Validation Accuracy:', 0.92849132810768331)
+Loss has improved more than the threshold...saving this model..0.215869141556
+('Epoch', 6, 'completed out of', 2000, 'loss:', 400432945.8984375)
+('Training Accuracy:', 0.96585264900662249)
+('Testing/Validation Accuracy:', 0.93548145968663066)
+Loss has improved more than the threshold...saving this model..0.224064923361
+('Epoch', 7, 'completed out of', 2000, 'loss:', 310709968.56445312)
+('Training Accuracy:', 0.9668874172185431)
+('Testing/Validation Accuracy:', 0.92191238073926218)
+Loss has improved more than the threshold...saving this model..0.310637543227
+('Epoch', 8, 'completed out of', 2000, 'loss:', 214191787.2734375)
+('Training Accuracy:', 0.97009519867549665)
+('Testing/Validation Accuracy:', 0.93095843337084117)
+Loss has improved more than the threshold...saving this model..0.0257799537937
+('Epoch', 9, 'completed out of', 2000, 'loss:', 208669932.89453125)
+('Training Accuracy:', 0.96740480132450335)
+('Testing/Validation Accuracy:', 0.91574461758136749)
+Loss has improved more than the threshold...saving this model..0.149270831831
+('Epoch', 10, 'completed out of', 2000, 'loss:', 177521598.43334961)
+('Training Accuracy:', 0.9679221854304636)
+('Testing/Validation Accuracy:', 0.91985645968663066)
+Loss has improved more than the threshold...saving this model..0.134310595333
+('Epoch', 11, 'completed out of', 2000, 'loss:', 153678566.86328125)
+('Training Accuracy:', 0.94267384105960261)
+('Testing/Validation Accuracy:', 0.89683014389715698)
+Loss has improved more than the threshold...saving this model..0.085627408623
+('Epoch', 12, 'completed out of', 2000, 'loss:', 140519469.421875)
+('Training Accuracy:', 0.97392384105960261)
+('Testing/Validation Accuracy:', 0.92026764389715698)
+Loss has improved more than the threshold...saving this model..0.257442870286
+('Epoch', 13, 'completed out of', 2000, 'loss:', 104343733.8828125)
+('Training Accuracy:', 0.9387417218543046)
+('Testing/Validation Accuracy:', 0.89477422284452535)
+Loss did not improved more than the threshold...quitting now..-0.117678031205
+('Epoch', 14, 'completed out of', 2000, 'loss:', 116622699.0546875)
+('Training Accuracy:', 0.97382036423841056)
+('Testing/Validation Accuracy:', 0.91327751231820964)
+Loss has improved more than the threshold...saving this model..0.0489494125556
+('Epoch', 15, 'completed out of', 2000, 'loss:', 110914086.4453125)
+('Training Accuracy:', 0.98054635761589404)
+('Testing/Validation Accuracy:', 0.92849132810768331)
+Loss has improved more than the threshold...saving this model..0.361600497161
+('Epoch', 16, 'completed out of', 2000, 'loss:', 70807497.64453125)
+('Training Accuracy:', 0.97599337748344372)
+('Testing/Validation Accuracy:', 0.91862290705505167)
+Loss did not improved more than the threshold...quitting now..-0.217913972545
+('Epoch', 17, 'completed out of', 2000, 'loss:', 86237440.7421875)
+('Training Accuracy:', 0.97858029801324509)
+('Testing/Validation Accuracy:', 0.93136961758136749)
+Loss did not improved more than the threshold...quitting now..-0.0492108603728
+('Epoch', 18, 'completed out of', 2000, 'loss:', 90481259.397460938)
+('Training Accuracy:', 0.96512831125827814)
+('Testing/Validation Accuracy:', 0.91204395968663066)
+Loss has improved more than the threshold...saving this model..0.0404959037753
+('Epoch', 19, 'completed out of', 2000, 'loss:', 86817139.0234375)
+('Training Accuracy:', 0.96678394039735094)
+('Testing/Validation Accuracy:', 0.90669856494978851)
+Loss has improved more than the threshold...saving this model..0.280549834304
+('Epoch', 20, 'completed out of', 2000, 'loss:', 62460605.055664062)
+('Training Accuracy:', 0.96109271523178808)
+('Testing/Validation Accuracy:', 0.90998803863399902)
+Loss did not improved more than the threshold...quitting now..-0.127761249247
+('Epoch', 21, 'completed out of', 2000, 'loss:', 70440649.986328125)
+('Training Accuracy:', 0.97423427152317876)
+('Testing/Validation Accuracy:', 0.91368869652873597)
+Loss has improved more than the threshold...saving this model..0.22719447486
+('Epoch', 22, 'completed out of', 2000, 'loss:', 54436923.50390625)
+('Training Accuracy:', 0.98199503311258274)
+('Testing/Validation Accuracy:', 0.93383672284452535)
+Loss has improved more than the threshold...saving this model..0.206989800888
+('Epoch', 23, 'completed out of', 2000, 'loss:', 43169035.546875)
+('Training Accuracy:', 0.96430049668874174)
+('Testing/Validation Accuracy:', 0.91368869652873597)
+Loss did not improved more than the threshold...quitting now..-1.39389281645
+('Epoch', 24, 'completed out of', 2000, 'loss:', 103342044.08886719)
+('Training Accuracy:', 0.95674668874172186)
+('Testing/Validation Accuracy:', 0.91533343337084117)
+Loss did not improved more than the threshold...quitting now..-0.236930641079
+('Epoch', 25, 'completed out of', 2000, 'loss:', 127826940.84521484)
+('Training Accuracy:', 0.97526903973509937)
+('Testing/Validation Accuracy:', 0.92396830179189382)
+Loss has improved more than the threshold...saving this model..0.574439867029
+('Epoch', 26, 'completed out of', 2000, 'loss:', 54398049.943359375)
+('Training Accuracy:', 0.97247516556291391)
+('Testing/Validation Accuracy:', 0.90998803863399902)
+Loss has improved more than the threshold...saving this model..0.42000328404
+('Epoch', 27, 'completed out of', 2000, 'loss:', 31550690.321777344)
+('Training Accuracy:', 0.98116721854304634)
+('Testing/Validation Accuracy:', 0.92927631578947367)
+Loss has improved more than the threshold...saving this model..0.312730639254
+('Epoch', 28, 'completed out of', 2000, 'loss:', 21683822.768554688)
+('Training Accuracy:', 0.98644453642384111)
+('Testing/Validation Accuracy:', 0.93421052631578949)
+Loss did not improved more than the threshold...quitting now..-1.17232888391
+('Epoch', 29, 'completed out of', 2000, 'loss:', 47104394.513671875)
+('Training Accuracy:', 0.96036837748344372)
+('Testing/Validation Accuracy:', 0.90546501231820964)
+Loss has improved more than the threshold...saving this model..0.435537983863
+('Epoch', 30, 'completed out of', 2000, 'loss:', 26588641.49609375)
+('Training Accuracy:', 0.98468543046357615)
+('Testing/Validation Accuracy:', 0.93178080179189382)
+Loss has improved more than the threshold...saving this model..0.273050111473
+('Epoch', 31, 'completed out of', 2000, 'loss:', 19328609.971679688)
+('Training Accuracy:', 0.97423427152317876)
+('Testing/Validation Accuracy:', 0.91409988073926218)
+Loss has improved more than the threshold...saving this model..0.130406709357
+('Epoch', 32, 'completed out of', 2000, 'loss:', 16808029.548828125)
+('Training Accuracy:', 0.98820364238410596)
+('Testing/Validation Accuracy:', 0.92639802631578949)
+Loss did not improved more than the threshold...quitting now..-1.12356821052
+('Epoch', 33, 'completed out of', 2000, 'loss:', 35692997.231445312)
+('Training Accuracy:', 0.97971854304635764)
+('Testing/Validation Accuracy:', 0.91821172284452535)
+Loss has improved more than the threshold...saving this model..0.292381640447
+('Epoch', 34, 'completed out of', 2000, 'loss:', 25257020.1484375)
+('Training Accuracy:', 0.99099751655629142)
+('Testing/Validation Accuracy:', 0.93219198600242015)
+Loss did not improved more than the threshold...quitting now..-0.585188696079
+('Epoch', 35, 'completed out of', 2000, 'loss:', 40037142.8359375)
+('Training Accuracy:', 0.96450745033112584)
+('Testing/Validation Accuracy:', 0.91163277547610433)
+Loss did not improved more than the threshold...quitting now..-1.04577330874
+('Epoch', 36, 'completed out of', 2000, 'loss:', 81906918.171875)
+('Training Accuracy:', 0.91928807947019864)
+('Testing/Validation Accuracy:', 0.87956040705505167)
+Loss has improved more than the threshold...saving this model..0.483081320058
+('Epoch', 37, 'completed out of', 2000, 'loss:', 42339216.01953125)
+('Training Accuracy:', 0.98106374172185429)
+('Testing/Validation Accuracy:', 0.926846591265578)
+Loss has improved more than the threshold...saving this model..0.413088507234
+('Epoch', 38, 'completed out of', 2000, 'loss:', 24849372.4765625)
+('Training Accuracy:', 0.98706539735099341)
+('Testing/Validation Accuracy:', 0.92479067021294648)
+Loss has improved more than the threshold...saving this model..0.27239088606
+('Epoch', 39, 'completed out of', 2000, 'loss:', 18080629.889648438)
+('Training Accuracy:', 0.97754552980132448)
+('Testing/Validation Accuracy:', 0.91451106494978851)
+Loss has improved more than the threshold...saving this model..0.313749587679
+('Epoch', 40, 'completed out of', 2000, 'loss:', 12407839.716796875)
+('Training Accuracy:', 0.97702814569536423)
+('Testing/Validation Accuracy:', 0.91783791937326131)
+Loss did not improved more than the threshold...quitting now..-0.400902126925
+('Epoch', 41, 'completed out of', 2000, 'loss:', 17382169.049804688)
+('Training Accuracy:', 0.98323675496688745)
+('Testing/Validation Accuracy:', 0.92606160358378764)
+Loss did not improved more than the threshold...quitting now..-0.0480183395476
+('Epoch', 42, 'completed out of', 2000, 'loss:', 18216831.9453125)
+('Training Accuracy:', 0.98282284768211925)
+('Testing/Validation Accuracy:', 0.92232356494978851)
+Loss has improved more than the threshold...saving this model..0.427166047905
+('Epoch', 43, 'completed out of', 2000, 'loss:', 10435219.837890625)
+('Training Accuracy:', 0.98209850993377479)
+('Testing/Validation Accuracy:', 0.93342553863399902)
+Loss did not improved more than the threshold...quitting now..-1.42362601094
+('Epoch', 44, 'completed out of', 2000, 'loss:', 25291070.229003906)
+('Training Accuracy:', 0.98199503311258274)
+('Testing/Validation Accuracy:', 0.92643540705505167)
+Loss has improved more than the threshold...saving this model..0.664615304459
+('Epoch', 45, 'completed out of', 2000, 'loss:', 8482237.888671875)
+('Training Accuracy:', 0.99006622516556286)
+('Testing/Validation Accuracy:', 0.92931369652873597)
+Loss did not improved more than the threshold...quitting now..-0.260634096475
+('Epoch', 46, 'completed out of', 2000, 'loss:', 10692998.296875)
+('Training Accuracy:', 0.99068708609271527)
+('Testing/Validation Accuracy:', 0.93136961758136749)
+Loss did not improved more than the threshold...quitting now..-0.0709986486369
+('Epoch', 47, 'completed out of', 2000, 'loss:', 11452186.725830078)
+('Training Accuracy:', 0.97899420529801329)
+('Testing/Validation Accuracy:', 0.911221591265578)
+Loss did not improved more than the threshold...quitting now..-0.536896357936
+('Epoch', 48, 'completed out of', 2000, 'loss:', 17600824.069335938)
+('Training Accuracy:', 0.98820364238410596)
+('Testing/Validation Accuracy:', 0.93178080179189382)
+Loss has improved more than the threshold...saving this model..0.161473544813
+('Epoch', 49, 'completed out of', 2000, 'loss:', 14758756.615234375)
+('Training Accuracy:', 0.98675496688741726)
+('Testing/Validation Accuracy:', 0.92931369652873597)
+Loss did not improved more than the threshold...quitting now..-2.35136641292
+('Epoch', 50, 'completed out of', 2000, 'loss:', 49462001.216796875)
+('Training Accuracy:', 0.94877897350993379)
+('Testing/Validation Accuracy:', 0.89436303863399902)
+Loss has improved more than the threshold...saving this model..0.744594481844
+('Epoch', 51, 'completed out of', 2000, 'loss:', 12632868.049804688)
+('Training Accuracy:', 0.9829263245033113)
+('Testing/Validation Accuracy:', 0.93095843337084117)
+Loss has improved more than the threshold...saving this model..0.197030107942
+('Epoch', 52, 'completed out of', 2000, 'loss:', 10143812.694335938)
+('Training Accuracy:', 0.98727235099337751)
+('Testing/Validation Accuracy:', 0.93260317021294648)
+Loss has improved more than the threshold...saving this model..0.377226100774
+('Epoch', 53, 'completed out of', 2000, 'loss:', 6317301.7846679688)
+('Training Accuracy:', 0.99182533112582782)
+('Testing/Validation Accuracy:', 0.93054724916031484)
+Loss did not improved more than the threshold...quitting now..-0.292734660775
+('Epoch', 54, 'completed out of', 2000, 'loss:', 8166594.9796142578)
+('Training Accuracy:', 0.98830711920529801)
+('Testing/Validation Accuracy:', 0.92561303863399902)
+Loss has improved more than the threshold...saving this model..0.562760683654
+('Epoch', 55, 'completed out of', 2000, 'loss:', 3570756.4057617188)
+('Training Accuracy:', 0.99306705298013243)
+('Testing/Validation Accuracy:', 0.93219198600242015)
+Loss has improved more than the threshold...saving this model..0.0869613729162
+('Epoch', 56, 'completed out of', 2000, 'loss:', 3260238.5263671875)
+('Training Accuracy:', 0.99058360927152322)
+('Testing/Validation Accuracy:', 0.93507027547610433)
+Loss did not improved more than the threshold...quitting now..-6.51606244675
+('Epoch', 57, 'completed out of', 2000, 'loss:', 24504156.35546875)
+('Training Accuracy:', 0.9845819536423841)
+('Testing/Validation Accuracy:', 0.93013606494978851)
+Loss has improved more than the threshold...saving this model..0.371467097733
+('Epoch', 58, 'completed out of', 2000, 'loss:', 15401668.51171875)
+('Training Accuracy:', 0.9839610927152318)
+('Testing/Validation Accuracy:', 0.9330143544234728)
+Loss has improved more than the threshold...saving this model..0.497539450144
+('Epoch', 59, 'completed out of', 2000, 'loss:', 7738730.8291015625)
+('Training Accuracy:', 0.98778973509933776)
+('Testing/Validation Accuracy:', 0.93794856494978851)
+Loss has improved more than the threshold...saving this model..0.280368195851
+('Epoch', 60, 'completed out of', 2000, 'loss:', 5569036.8283691406)
+('Training Accuracy:', 0.97982201986754969)
+('Testing/Validation Accuracy:', 0.91821172284452535)
+Loss has improved more than the threshold...saving this model..0.333175385374
+('Epoch', 61, 'completed out of', 2000, 'loss:', 3713570.8369140625)
+('Training Accuracy:', 0.99461920529801329)
+('Testing/Validation Accuracy:', 0.93794856494978851)
+Loss has improved more than the threshold...saving this model..0.376222953128
+('Epoch', 62, 'completed out of', 2000, 'loss:', 2316440.25)
+('Training Accuracy:', 0.99254966887417218)
+('Testing/Validation Accuracy:', 0.92931369652873597)
+Loss did not improved more than the threshold...quitting now..-0.525796584682
+('Epoch', 63, 'completed out of', 2000, 'loss:', 3534416.6220703125)
+('Training Accuracy:', 0.98696192052980136)
+('Testing/Validation Accuracy:', 0.93753738073926218)
+Loss did not improved more than the threshold...quitting now..-9.09440447606
+('Epoch', 64, 'completed out of', 2000, 'loss:', 35677830.970092773)
+('Training Accuracy:', 0.97516556291390732)
+('Testing/Validation Accuracy:', 0.91451106494978851)
+Loss has improved more than the threshold...saving this model..0.805055782137
+('Epoch', 65, 'completed out of', 2000, 'loss:', 6955186.853515625)
+('Training Accuracy:', 0.99099751655629142)
+('Testing/Validation Accuracy:', 0.92561303863399902)
+Loss did not improved more than the threshold...quitting now..-0.339293239858
+('Epoch', 66, 'completed out of', 2000, 'loss:', 9315034.7348632812)
+('Training Accuracy:', 0.98872102649006621)
+('Testing/Validation Accuracy:', 0.93013606494978851)
+Loss has improved more than the threshold...saving this model..0.658150310157
+('Epoch', 67, 'completed out of', 2000, 'loss:', 3184341.7349853516)
+('Training Accuracy:', 0.99534354304635764)
+('Testing/Validation Accuracy:', 0.92355711758136749)
+Loss did not improved more than the threshold...quitting now..-1.37247609131
+('Epoch', 68, 'completed out of', 2000, 'loss:', 7554774.6328125)
+('Training Accuracy:', 0.98127069536423839)
+('Testing/Validation Accuracy:', 0.92273474916031484)
+Loss did not improved more than the threshold...quitting now..-0.251647001525
+('Epoch', 69, 'completed out of', 2000, 'loss:', 9455911.0163574219)
+('Training Accuracy:', 0.98023592715231789)
+('Testing/Validation Accuracy:', 0.9173893544234728)
+Loss has improved more than the threshold...saving this model..0.74045952712
+('Epoch', 70, 'completed out of', 2000, 'loss:', 2454191.6166992188)
+('Training Accuracy:', 0.99368791390728473)
+('Testing/Validation Accuracy:', 0.92479067021294648)
+Loss did not improved more than the threshold...quitting now..-5.15003535552
+('Epoch', 71, 'completed out of', 2000, 'loss:', 15093365.211914062)
+('Training Accuracy:', 0.98634105960264906)
+('Testing/Validation Accuracy:', 0.92109001231820964)
+Loss has improved more than the threshold...saving this model..0.762716233096
+('Epoch', 72, 'completed out of', 2000, 'loss:', 3581410.552734375)
+('Training Accuracy:', 0.98965231788079466)
+('Testing/Validation Accuracy:', 0.93383672284452535)
+Loss has improved more than the threshold...saving this model..0.521962065828
+('Epoch', 73, 'completed out of', 2000, 'loss:', 1712050.1020507812)
+('Training Accuracy:', 0.99648178807947019)
+('Testing/Validation Accuracy:', 0.93219198600242015)
+Loss did not improved more than the threshold...quitting now..-0.390296117795
+('Epoch', 74, 'completed out of', 2000, 'loss:', 2380256.6103515625)
+('Training Accuracy:', 0.99368791390728473)
+('Testing/Validation Accuracy:', 0.93136961758136749)
+Loss has improved more than the threshold...saving this model..0.378781988099
+('Epoch', 75, 'completed out of', 2000, 'loss:', 1478658.279296875)
+('Training Accuracy:', 0.99606788079470199)
+('Testing/Validation Accuracy:', 0.93136961758136749)
+Loss has improved more than the threshold...saving this model..0.259018590543
+('Epoch', 76, 'completed out of', 2000, 'loss:', 1095658.2958984375)
+('Training Accuracy:', 0.99575745033112584)
+('Testing/Validation Accuracy:', 0.92355711758136749)
+Loss did not improved more than the threshold...quitting now..-0.656905699426
+('Epoch', 77, 'completed out of', 2000, 'loss:', 1815402.4750976562)
+('Training Accuracy:', 0.99223923841059603)
+('Testing/Validation Accuracy:', 0.93589264389715698)
+Loss did not improved more than the threshold...quitting now..-4.15583449269
+('Epoch', 78, 'completed out of', 2000, 'loss:', 9359914.69921875)
+('Training Accuracy:', 0.97640728476821192)
+('Testing/Validation Accuracy:', 0.91081040705505167)
+Loss did not improved more than the threshold...quitting now..-0.0440298934465
+('Epoch', 79, 'completed out of', 2000, 'loss:', 9772030.74609375)
+('Training Accuracy:', 0.98696192052980136)
+('Testing/Validation Accuracy:', 0.93589264389715698)
+Loss did not improved more than the threshold...quitting now..-0.128063460678
+('Epoch', 80, 'completed out of', 2000, 'loss:', 11023470.821289062)
+('Training Accuracy:', 0.99161837748344372)
+('Testing/Validation Accuracy:', 0.9330143544234728)
+Loss has improved more than the threshold...saving this model..0.302824809959
+('Epoch', 81, 'completed out of', 2000, 'loss:', 7685290.3647460938)
+('Training Accuracy:', 0.98158112582781454)
+('Testing/Validation Accuracy:', 0.93753738073926218)
+Loss has improved more than the threshold...saving this model..0.228207525346
+('Epoch', 82, 'completed out of', 2000, 'loss:', 5931449.2690429688)
+('Training Accuracy:', 0.98954884105960261)
+('Testing/Validation Accuracy:', 0.93959330179189382)
+Loss has improved more than the threshold...saving this model..0.338235147542
+('Epoch', 83, 'completed out of', 2000, 'loss:', 3925224.650390625)
+('Training Accuracy:', 0.99472268211920534)
+('Testing/Validation Accuracy:', 0.93342553863399902)
+Loss has improved more than the threshold...saving this model..0.622947304241
+('Epoch', 84, 'completed out of', 2000, 'loss:', 1480016.5358886719)
+('Training Accuracy:', 0.98654801324503316)
+('Testing/Validation Accuracy:', 0.92479067021294648)
+Loss did not improved more than the threshold...quitting now..-1.90448771645
+('Epoch', 85, 'completed out of', 2000, 'loss:', 4298689.8486328125)
+('Training Accuracy:', 0.99534354304635764)
+('Testing/Validation Accuracy:', 0.93424790705505167)
+Loss has improved more than the threshold...saving this model..0.750555535418
+('Epoch', 86, 'completed out of', 2000, 'loss:', 1072284.3876953125)
+('Training Accuracy:', 0.99596440397350994)
+('Testing/Validation Accuracy:', 0.92109001231820964)
+Loss did not improved more than the threshold...quitting now..-0.720529419598
+('Epoch', 87, 'completed out of', 2000, 'loss:', 1844896.8352050781)
+('Training Accuracy:', 0.98923841059602646)
+('Testing/Validation Accuracy:', 0.93630382810768331)
+Loss did not improved more than the threshold...quitting now..-0.668249126698
+('Epoch', 88, 'completed out of', 2000, 'loss:', 3077747.5341796875)
+('Training Accuracy:', 0.99223923841059603)
+('Testing/Validation Accuracy:', 0.93342553863399902)
+Loss has improved more than the threshold...saving this model..0.207723402534
+('Epoch', 89, 'completed out of', 2000, 'loss:', 2438427.3442382812)
+('Training Accuracy:', 0.99793046357615889)
+('Testing/Validation Accuracy:', 0.92725777547610433)
+Loss has improved more than the threshold...saving this model..0.908024658736
+('Epoch', 90, 'completed out of', 2000, 'loss:', 224275.18713378906)
+('Training Accuracy:', 0.99596440397350994)
+('Testing/Validation Accuracy:', 0.93630382810768331)
+Loss did not improved more than the threshold...quitting now..-2.79470144398
+('Epoch', 91, 'completed out of', 2000, 'loss:', 851057.37646484375)
+('Training Accuracy:', 0.99565397350993379)
+('Testing/Validation Accuracy:', 0.93178080179189382)
+Loss did not improved more than the threshold...quitting now..-5.1591312128
+('Epoch', 92, 'completed out of', 2000, 'loss:', 5241774.0512695312)
+('Training Accuracy:', 0.97050910596026485)
+('Testing/Validation Accuracy:', 0.91574461758136749)
+Loss did not improved more than the threshold...quitting now..-0.464480279846
+('Epoch', 93, 'completed out of', 2000, 'loss:', 7676474.7294921875)
+('Training Accuracy:', 0.98716887417218546)
+('Testing/Validation Accuracy:', 0.93671501231820964)
+Loss has improved more than the threshold...saving this model..0.334577059814
+('Epoch', 94, 'completed out of', 2000, 'loss:', 5108102.384765625)
+('Training Accuracy:', 0.99441225165562919)
+('Testing/Validation Accuracy:', 0.93133223684210531)
+Loss has improved more than the threshold...saving this model..0.148803265274
+('Epoch', 95, 'completed out of', 2000, 'loss:', 4348000.0705566406)
+('Training Accuracy:', 0.99275662251655628)
+('Testing/Validation Accuracy:', 0.93054724916031484)
+Loss has improved more than the threshold...saving this model..0.845391232526
+('Epoch', 96, 'completed out of', 2000, 'loss:', 672238.93188476562)
+('Training Accuracy:', 0.99689569536423839)
+('Testing/Validation Accuracy:', 0.92766895968663066)
+
+

@@ -1,6 +1,8 @@
 import tensorflow as tf
 from config import *
 
+tf.set_random_seed(tensorflowSeed)
+
 class convNetModel:
 
     optimizer = None

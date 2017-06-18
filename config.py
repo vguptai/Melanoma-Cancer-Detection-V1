@@ -12,3 +12,10 @@ testing_keep_rate = 1.0
 ckpt_dir = "./model"
 # The folder where the dataset resides.
 datasetFolder = "melanoma-dataset"
+
+#Seeds to enable reproducible results
+tensorflowSeed = 1234
+randomSeed = 1234
+numpySeed = 1234
+opsSeed = 1234
+dropoutSeed = 1234
