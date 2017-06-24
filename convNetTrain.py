@@ -6,12 +6,17 @@ from convNetModel import *
 import random
 import numpy as np
 
-genericDataSetLoader = genericDataSetLoader(False,datasetFolder,n_classes,testTrainSplit,imageSizeX,imageSizeY)
-genericDataSetLoader.loadData()
-
 random.seed(randomSeed)
 tf.set_random_seed(tensorflowSeed)
 np.random.seed(numpySeed)
+
+genericDataSetLoader = genericDataSetLoader(False,datasetFolder,n_classes,testTrainSplit,imageSizeX,imageSizeY)
+genericDataSetLoader.loadData()
+if oversample_minority:
+    genericDataSetLoader.oversampleMinorityClass(oversampling_multiplier)
+numTrainingBatches = genericDataSetLoader.numberOfTrainingBatches(batch_size)
+if enableImageStandardization:
+    genericDataSetLoader.standardizeImagesBatch()
 
 def calculateTrainAccuracy():
     genericDataSetLoader.resetTrainBatch()
@@ -22,9 +27,7 @@ def calculateTrainAccuracy():
             break
         acc = convNetModel.test(trainX,trainY)
         batchAccuracies.append(acc)
-        #print "Accuracy of test batch..."+str(acc)
-    #testX = np.reshape(testX, (-1, imageSizeX, imageSizeY, numChannels))
-    print('Training Accuracy:', sum(batchAccuracies) / float(len(batchAccuracies)))
+    print "Training Accuracy:"+ str(sum(batchAccuracies) / float(len(batchAccuracies)))
 
 def calculateTestAccuracy():
     genericDataSetLoader.resetTestBatch()
@@ -35,9 +38,7 @@ def calculateTestAccuracy():
             break
         acc = convNetModel.test(testX,testY)
         batchAccuracies.append(acc)
-        #print "Accuracy of test batch..."+str(acc)
-    #testX = np.reshape(testX, (-1, imageSizeX, imageSizeY, numChannels))
-    print('Testing/Validation Accuracy:', sum(batchAccuracies) / float(len(batchAccuracies)))
+    print "Testing Accuracy:" +str(sum(batchAccuracies) / float(len(batchAccuracies)))
 
 
 def restoreFromCheckPoint(sess,saver):
@@ -55,25 +56,20 @@ def restoreFromCheckPoint(sess,saver):
 def trainNeuralNetwork():
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
-
         #Restore the model from a previous checkpoint if any and get the epoch from which to continue training
         start = restoreFromCheckPoint(sess,saver)
         print "Start from:"+str(start)+"/"+str(numEpochs)
-
         prev_epoch_loss = 0
         #Training epochs
         for epoch in range(start,numEpochs):
             epoch_loss = 0
-
             genericDataSetLoader.resetTrainBatch()
-
             while(True):
                 epoch_x, epoch_y = genericDataSetLoader.getNextTrainBatch(batch_size)
                 if(epoch_x is None):
                     break
                 _, c = convNetModel.train(sess,epoch_x,epoch_y)
                 epoch_loss += c
-
 
             if(prev_epoch_loss!=0):
                 loss_improvement = (prev_epoch_loss - epoch_loss)/prev_epoch_loss
@@ -82,22 +78,18 @@ def trainNeuralNetwork():
                     #break
                 else:
                     print "Loss has improved more than the threshold...saving this model.."+str(loss_improvement)
-
-            global_step.assign(epoch).eval()
-            saver.save(sess,'model/data-all.chkp',global_step=global_step)
-            print('Epoch', epoch, 'completed out of', numEpochs, 'loss:', epoch_loss)
-
+            #saver.save(sess,'model/data-all.chkp',global_step=global_step)
+            print "Epoch:"+str(epoch)+'/'+str(numEpochs)+" loss:" + str(epoch_loss)
             prev_epoch_loss = epoch_loss
 
             calculateTrainAccuracy()
+
             #Get the validation/test accuracy
             calculateTestAccuracy()
 
-#if not os.path.exists(ckpt_dir):
-#    os.makedirs(ckpt_dir)
-
-global_step = tf.Variable(0, name='global_step', trainable=False)
-
-convNetModel = convNetModel()
+decaySteps = numEpochsPerDecay*numTrainingBatches
+convNetModel = convNetModel(decaySteps)
+global_step = convNetModel.getGlobalStep()
 saver = tf.train.Saver()
+#writer = tf.train.SummaryWriter(logs_path, graph=tf.get_default_graph())
 trainNeuralNetwork()

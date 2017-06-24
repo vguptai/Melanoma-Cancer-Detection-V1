@@ -6,11 +6,25 @@ batch_size = 32
 testTrainSplit = 0.8
 imageSizeX=224
 imageSizeY=224
-training_keep_rate = 0.9
+training_keep_rate = 0.5
 testing_keep_rate = 1.0
 
+#Data augmentation
+oversample_minority = False
+oversampling_multiplier = 5
+
+#Batch Normalization
+enableBatchNormalization = False
+
+#Local Response Normalization
+enableLocalResponseNormalization = False
+
+#image standardization
+enableImageStandardization = False
+
 ckpt_dir = "./model"
-# The folder where the dataset resides.
+logs_dir = "./logs"
+#The folder where the dataset resides.
 datasetFolder = "melanoma-dataset"
 
 #Seeds to enable reproducible results
@@ -19,3 +33,8 @@ randomSeed = 1234
 numpySeed = 1234
 opsSeed = 1234
 dropoutSeed = 1234
+
+#learning rate
+learningRateInitial = 0.1
+learningRateDecayFactor = 0.01
+numEpochsPerDecay = 30
