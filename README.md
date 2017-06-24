@@ -1,5 +1,10 @@
 # Melanoma-Cancer-Detection-V1
 
+Melanoma Cancer is a dangerous form of skin-cancer. Though, it is a rare form of skin-cancer but it is highly fatal. In this repo, we are training a Deep CNN for finding out if a lesion is cancerous or not.
+
+This [article](https://medium.com/@vikram.gupta/detection-of-melanoma-cancer-using-deep-learning-85a7878e15eb) explains the approach and the results in detail.
+
+<b>Steps to train and test the model</b>
 
 1) Delete all the checkpoints from the "model" directory before training a new model from scratch.
 
