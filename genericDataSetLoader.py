@@ -218,6 +218,70 @@ class genericDataSetLoader:
         print self.testingDataX.shape
         print self.testingDataY.shape
 
+    def standardizeImages(self):
+        print "Standardizing Images..."
+        self.trainingDataXStandardized = []
+        self.testingDataXStandardized = []
+        with tf.Session() as sess:
+            for i in range(self.trainingDataX.shape[0]):
+                print str(i)+"/"+str(self.trainingDataX.shape[0])
+                self.trainingDataXStandardized.append(tf.image.per_image_standardization(self.trainingDataX[i]).eval())
+
+            for i in range(self.testingDataX.shape[0]):
+                print str(i)+"/"+str(self.testingDataX.shape[0])
+                self.testingDataXStandardized.append(tf.image.per_image_standardization(self.testingDataX[i]).eval())
+        #self.trainingDataX = tf.map_fn(lambda img:tf.image.per_image_standardization(img), self.trainingDataX, dtype=tf.float32)
+        #self.testingDataX = tf.map_fn(lambda img:tf.image.per_image_standardization(img), self.testingDataX, dtype=tf.float32)
+        #print self.trainingDataXStandardized[0]
+        self.trainingDataX = np.array(self.trainingDataXStandardized)
+        self.testingDataX = np.array(self.testingDataXStandardized)
+        print self.testingDataX.shape
+        print self.trainingDataX.shape
+        #with tf.Session() as sess:
+        #    self.trainingDataX = self.trainingDataX.eval()
+        #    self.testingDataX = self.testingDataX.eval()
+        print "Images standardized...Saving them..."
+        self.__save("preparedDataStandardized.pkl")
+
+    def _createBatchAndStandardize(self,imageDataArray,batchSize):
+        i = 0
+        standardizedImagesBatch = None
+        standardizedImages = None
+        totalNumImages = imageDataArray.shape[0]
+        print "Total Number of images:"+str(totalNumImages)
+        while i<totalNumImages:
+            minIndx = i
+            maxIndx = min(imageDataArray.shape[0],i+batchSize)
+            print str(i)+"/"+str(imageDataArray.shape[0])
+            i = i + batchSize
+            print i
+            standardizedImagesBatch = tf.map_fn(lambda img:tf.image.per_image_standardization(img), imageDataArray[minIndx:maxIndx], dtype=tf.float32)
+            if standardizedImages is None:
+                standardizedImages = standardizedImagesBatch.eval()
+            else:
+                standardizedImages = np.vstack((standardizedImages,standardizedImagesBatch.eval()))
+        return standardizedImages
+
+    '''
+    This function makes the test and training images zero mean and unit standard deviation
+    Batching had to be done to avoid out of memory errors
+    Could not do it offline as the file that was getting made was huge in size
+    '''
+    def standardizeImagesBatch(self):
+        print "Standardizing Images..."
+        batchSize = 512
+        with tf.Session() as sess:
+            self.trainingDataX = self._createBatchAndStandardize(self.trainingDataX,batchSize)
+            self.testingDataX = self._createBatchAndStandardize(self.testingDataX,batchSize)
+        print self.testingDataX.shape
+        print self.trainingDataX.shape
+        print "Images standardized..."
+        #self.__save("preparedDataStandardized.pkl")
+
+    '''
+    This function finds the minority class from the training data and
+    oversamples/duplicates the samples of minority class
+    '''
     def oversampleMinorityClass(self,multiplier):
         classes_index_array = np.argmax(self.trainingDataY, axis=1)
         class_distribution = Counter(classes_index_array).most_common()
@@ -242,7 +306,7 @@ class genericDataSetLoader:
         print "Shape of training data after augmentation..."
         print self.trainingDataX.shape
         print self.trainingDataY.shape
-        self.trainingData, self.trainingDataY = self.__shuffle_numpy_array(self.trainingDataX,self.trainingDataY)
+        self.trainingDataX, self.trainingDataY = self.__shuffle_numpy_array(self.trainingDataX,self.trainingDataY)
         print "Shape of training data after augmentation and shuffle..."
         print self.trainingDataX.shape
         print self.trainingDataY.shape
@@ -281,14 +345,17 @@ class genericDataSetLoader:
 	  self.distortion_image_data_input_placeholder = decoded_image_as_float
 	  self.distort_image_data_operation = distort_result
 
-    def __save(self):
+    '''
+    Dump the training and testing data, so that we do not have to do it repeatedly
+    '''
+    def __save(self,outputPath='preparedData.pkl'):
         print "Saving the processed data..."
         preparedData={}
         preparedData["trainingX"] = self.trainingDataX
         preparedData["trainingY"] = self.trainingDataY
         preparedData["testingX"] = self.testingDataX
         preparedData["testingY"] = self.testingDataY
-        pklFile = open("preparedData.pkl", 'wb')
+        pklFile = open(outputPath, 'wb')
         pickle.dump(preparedData, pklFile)
         pklFile.close()
         print "Data saved..."
