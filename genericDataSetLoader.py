@@ -13,6 +13,7 @@ import pickle
 import util
 from collections import Counter
 from config import *
+import DatasetManager as DatasetManager
 
 tf.set_random_seed(tensorflowSeed)
 np.random.seed(numpySeed)
@@ -34,7 +35,7 @@ class genericDataSetLoader:
     testingDataOffset = 0
     alreadySplitInTrainTest = False
 
-    def __init__(self,alreadySplitInTrainTest,basePath,numClasses,splitPercentage,imageSizeX,imageSizeY):
+    def __init__(self,alreadySplitInTrainTest=False,basePath='dataset',numClasses=2,splitPercentage=0.8,imageSizeX=299,imageSizeY=299):
         self.basePath = basePath
         self.numClasses = numClasses
         self.splitPercentage = splitPercentage
@@ -217,6 +218,31 @@ class genericDataSetLoader:
         print self.trainingDataY.shape
         print self.testingDataX.shape
         print self.testingDataY.shape
+
+    def convertArrayToBottleNecks(self,sess,dataArray,category,FLAGS,inceptionV3):
+        bottlenecks = []
+        #for i in range(dataArray.shape[0]):
+        #print str(i)+"/"+str(dataArray.shape[0])
+        batchSize = 512
+        i = 0
+        totalNumImages = dataArray.shape[0]
+        print "Total Number of images:"+str(totalNumImages)
+        while i<totalNumImages:
+            minIndx = i
+            maxIndx = min(dataArray.shape[0],i+batchSize)
+            print str(i)+"/"+str(dataArray.shape[0])
+            bottlenecksBatch = DatasetManager.get_random_cached_bottlenecks(sess,i,dataArray[minIndx:maxIndx],category,FLAGS.bottleneck_dir,inceptionV3)
+            bottlenecks.extend(bottlenecksBatch)
+            i = i + batchSize
+        return np.array(bottlenecks)
+
+    def convertToBottleNecks(self,sess,FLAGS,inceptionV3):
+        print "Converting dataset to bottlenecks..."
+        self.trainingDataX = np.squeeze(self.convertArrayToBottleNecks(sess,self.trainingDataX,"train",FLAGS,inceptionV3))
+        self.testingDataX = np.squeeze(self.convertArrayToBottleNecks(sess,self.testingDataX,"test",FLAGS,inceptionV3))
+        print self.trainingDataX.shape
+        print self.testingDataX.shape
+        print "Converted dataset to bottlenecks..."
 
     def standardizeImages(self):
         print "Standardizing Images..."

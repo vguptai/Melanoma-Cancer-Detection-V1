@@ -88,8 +88,9 @@ def trainNeuralNetwork():
             calculateTestAccuracy()
 
 decaySteps = numEpochsPerDecay*numTrainingBatches
+
 convNetModel = convNetModel(decaySteps)
+
 global_step = convNetModel.getGlobalStep()
 saver = tf.train.Saver()
-#writer = tf.train.SummaryWriter(logs_path, graph=tf.get_default_graph())
 trainNeuralNetwork()
