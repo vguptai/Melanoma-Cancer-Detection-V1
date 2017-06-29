@@ -1,5 +1,5 @@
 import tensorflow as tf
-from constants import *
+from config import *
 import numpy as np
 from tensorflow.python.framework import tensor_shape
 
@@ -136,6 +136,9 @@ class InceptionV3:
 				self.keep_rate = tf.placeholder(tf.float32, name='dropout_keep_rate')
 				self.is_training_ph = tf.placeholder(tf.bool, name='is_training_ph')
 
+			#layer_name = 'final_minus_3_training_ops'
+			#logits_final_minus_3 = self._add_fully_connected_layer(self.bottleneckInput,BOTTLENECK_TENSOR_SIZE,FINAL_MINUS_3_LAYER_SIZE,layer_name,self.keep_rate,self.is_training_ph,FLAGS)
+
 			layer_name = 'final_minus_2_training_ops'
 			logits_final_minus_2 = self._add_fully_connected_layer(self.bottleneckInput,BOTTLENECK_TENSOR_SIZE,FINAL_MINUS_2_LAYER_SIZE,layer_name,self.keep_rate,self.is_training_ph,FLAGS)
 
@@ -154,7 +157,15 @@ class InceptionV3:
 
 			self.finalTensor = tf.nn.softmax(logits, name=final_tensor_name)
 			with tf.name_scope('cross_entropy'):
+				#https://stackoverflow.com/questions/35155655/loss-function-for-class-imbalanced-binary-classifier-in-tensor-flow
+				#class 0 is minority class, so weight corresponding to it should be higer
+				num_minority_samples = 616
+				num_majority_samples = 9032
+				ratio = num_minority_samples /float((num_majority_samples + num_minority_samples))
+				class_weight = tf.constant([[1.0-ratio, ratio]])
+				weight_per_label = tf.transpose(tf.matmul(self.groundTruthInput,tf.transpose(class_weight)))
 				self.cross_entropy = tf.nn.softmax_cross_entropy_with_logits(labels=self.groundTruthInput, logits=logits)
+				self.cross_entropy = tf.multiply(weight_per_label,self.cross_entropy)
 			    	with tf.name_scope('total'):
 			    		self.cross_entropy_mean = tf.reduce_mean(self.cross_entropy)
 

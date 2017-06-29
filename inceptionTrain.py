@@ -1,5 +1,4 @@
 import argparse
-from constants import *
 from InceptionV3 import *
 import os.path
 from tensorflow.python.framework import graph_util
