@@ -2,7 +2,6 @@ import tensorflow as tf
 import tarfile
 from osUtils import *
 import random
-from constants import *
 from six.moves import urllib
 import sys
 import numpy as np

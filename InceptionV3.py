@@ -1,5 +1,4 @@
 import tensorflow as tf
-from constants import *
 import numpy as np
 from tensorflow.python.framework import tensor_shape
 
